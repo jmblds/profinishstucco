@@ -1,114 +1,176 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ProFinish Stucco</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
       color: #333;
+      background: #f5f7fa;
     }
-
-    header {
-      background-color: #2e2e2e;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #444;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
+    a {
+      color: #007bff;
       text-decoration: none;
-      font-weight: bold;
+      transition: color 0.3s ease;
     }
-
-    nav a:hover {
-      text-decoration: underline;
+    a:hover {
+      color: #0056b3;
     }
-
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    #imageUpload {
-      margin: 1rem 0;
-    }
-
-    #imageGallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    #imageGallery img {
-      width: 150px;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-    }
-
-    footer {
-      background-color: #2e2e2e;
+    header {
+      background: #2c3e50;
       color: white;
+      padding: 3rem 1.5rem;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 1rem;
+      gap: 2rem;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 3px solid transparent;
+    }
+    nav a.active,
+    nav a:hover {
+      border-color: #007bff;
+      color: #007bff;
+    }
+    main {
+      max-width: 960px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      background: white;
+      padding: 2rem 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+    /* Gallery */
+    #imageUpload {
+      margin-bottom: 1rem;
+      display: block;
+    }
+    #imageGallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+    }
+    #imageGallery img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    #imageGallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    /* Contact */
+    #contact p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 1.5rem 1rem 2rem;
+      }
+      nav .container {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>ProFinish Stucco</h1>
     <p>Reliable. Clean. Professional Stucco Work.</p>
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#gallery">Our Work</a>
-    <a href="#contact">Contact</a>
+    <div class="container">
+      <a href="#about" class="active">About</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>ProFinish Stucco has been providing high-quality exterior finishes for over 10 years. We specialize in residential and commercial stucco projects throughout the region.</p>
-  </section>
+  <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>ProFinish Stucco has been providing high-quality exterior finishes for over 10 years. We specialize in residential and commercial stucco projects throughout the region.</p>
+    </section>
 
-  <section id="gallery">
-    <h2>Our Work</h2>
-    <input type="file" id="imageUpload" multiple accept="image/*" />
-    <div id="imageGallery"></div>
-  </section>
+    <section id="gallery">
+      <h2>Our Work</h2>
+      <input type="file" id="imageUpload" multiple accept="image/*" />
+      <div id="imageGallery"></div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: contact@profinishstucco.com</p>
-    <p>Phone: (555) 123-4567</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ProFinish Stucco. All rights reserved.</p>
-  </footer>
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:contact@profinishstucco.com">contact@profinishstucco.com</a></p>
+      <p>Phone: (555) 123-4567</p>
+    </section>
+  </main>
 
   <script>
+    // Simple image upload preview gallery
     const imageUpload = document.getElementById('imageUpload');
     const imageGallery = document.getElementById('imageGallery');
 
     imageUpload.addEventListener('change', function () {
-      imageGallery.innerHTML = ''; // Clear existing
+      imageGallery.innerHTML = '';
       Array.from(this.files).forEach(file => {
         const reader = new FileReader();
         reader.onload = function (e) {
@@ -119,6 +181,18 @@
         reader.readAsDataURL(file);
       });
     });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   </script>
+
 </body>
 </html>

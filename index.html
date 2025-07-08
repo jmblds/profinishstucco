@@ -4,28 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ProFinish Stucco - Modern Business Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* Reset and base styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
       background: #f9f9f9;
       color: #333;
       line-height: 1.6;
     }
-    a {
-      color: #005f73;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #0a9396;
-    }
+    a { color: #005f73; text-decoration: none; }
+    a:hover { color: #0a9396; }
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -44,7 +33,6 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-
     /* Slideshow styles */
     .slideshow-container {
       position: relative;
@@ -67,7 +55,6 @@
       object-fit: cover;
       border-radius: 10px;
     }
-    /* Navigation buttons */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -91,13 +78,8 @@
     .prev:hover, .next:hover {
       background-color: rgba(10,147,150,0.95);
     }
-    .prev {
-      left: 15px;
-    }
-    .next {
-      right: 15px;
-    }
-    /* Dots */
+    .prev { left: 15px; }
+    .next { right: 15px; }
     .dots {
       text-align: center;
       padding: 15px 0;
@@ -120,8 +102,6 @@
     .active, .dot:hover {
       background-color: #0a9396;
     }
-
-    /* Contact section */
     section.contact {
       background: white;
       padding: 40px 20px;
@@ -156,19 +136,11 @@
     .contact-item:hover {
       background-color: #c6f0f1;
     }
-    .contact-item svg {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 10px;
-      fill: #0a9396;
-    }
     .contact-item p {
       font-size: 1.1rem;
       font-weight: 500;
       color: #005f73;
     }
-
-    /* Feedback form */
     form.feedback-form {
       display: flex;
       flex-direction: column;
@@ -186,9 +158,9 @@
       border: 2px solid #ccc;
       border-radius: 8px;
       font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      transition: border-color 0.3s ease;
+      font-family: Arial, sans-serif;
       resize: vertical;
+      transition: border-color 0.3s ease;
     }
     form.feedback-form input:focus,
     form.feedback-form textarea:focus {
@@ -206,4 +178,108 @@
       font-size: 1.1rem;
       transition: background-color 0.3s ease;
     }
-    form.feedback-form b
+    form.feedback-form button:hover {
+      background-color: #007a7c;
+    }
+    @media (max-width: 768px) {
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-item {
+        width: 80%;
+      }
+      .slide {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ProFinish Stucco</h1>
+</header>
+
+<div class="container">
+
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1581090700227-81b838d59262?auto=format&fit=crop&w=800&q=80" alt="Stucco Wall 1" />
+    </div>
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1610277997278-7326c1a9bcaf?auto=format&fit=crop&w=800&q=80" alt="Stucco Wall 2" />
+    </div>
+    <div class="slide">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Stucco Wall 3" />
+    </div>
+
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+  </div>
+
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+  </div>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <p><strong>Phone:</strong> (123) 456-7890</p>
+      </div>
+      <div class="contact-item">
+        <p><strong>Email:</strong> contact@profinishstucco.com</p>
+      </div>
+      <div class="contact-item">
+        <p><strong>Address:</strong> 1234 Stucco St., Dallas, TX</p>
+      </div>
+    </div>
+
+    <form class="feedback-form" id="feedbackForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email address" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message or feedback here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</div>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function changeSlide(n) {
+    showSlides(slideIndex += n);
+  }
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  function showSlides(n) {
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+    if (n > slides.length) slideIndex = 1;
+    if (n < 1) slideIndex = slides.length;
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+    for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }
+
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! We will get back to you soon.');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>

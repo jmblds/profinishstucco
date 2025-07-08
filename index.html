@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProFinish Stucco</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #2e2e2e;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    #imageUpload {
+      margin: 1rem 0;
+    }
+
+    #imageGallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #imageGallery img {
+      width: 150px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+    footer {
+      background-color: #2e2e2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ProFinish Stucco</h1>
+    <p>Reliable. Clean. Professional Stucco Work.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Our Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>ProFinish Stucco has been providing high-quality exterior finishes for over 10 years. We specialize in residential and commercial stucco projects throughout the region.</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Our Work</h2>
+    <input type="file" id="imageUpload" multiple accept="image/*" />
+    <div id="imageGallery"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@profinishstucco.com</p>
+    <p>Phone: (555) 123-4567</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ProFinish Stucco. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const imageUpload = document.getElementById('imageUpload');
+    const imageGallery = document.getElementById('imageGallery');
+
+    imageUpload.addEventListener('change', function () {
+      imageGallery.innerHTML = ''; // Clear existing
+      Array.from(this.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          imageGallery.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      });
+    });
+  </script>
+</body>
+</html>
